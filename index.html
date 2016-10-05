@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>MyTest</title>
+		<script type="text/javascript">
+			function myFunction() {
+				window.__adobe_cep__.evalScript("$._MYFUNCTIONS.traverse_project_items()", callback);
+			}
+			function callback(data) {
+				if (!data || data.length < 0) return;
+				try {
+					var file_paths = JSON.parse(data);
+					console.log(file_paths);
+					document.getElementById("result").innerHTML = file_paths;
+				} catch(error) {
+					console.log(error);
+				}
+			}
+		</script>
+	</head>
+
+	<body>
+		<button onclick="myFunction()">Get File Paths</button>
+		<div id="result"></div>
+	</body>
+</html>
